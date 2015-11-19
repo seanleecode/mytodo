@@ -55,15 +55,18 @@ app.controller('MainCtrl', function ($scope, localStorageService, $http) {
       sku: $scope.sku,
       price: 0
     }
-    $http.post(url, params).
-      success(function(data, status, headers, config) {
-        console.log("YATA!");
-        $scope.loadData();
-        $scope.name = '';
-      }).
-      error(function(data, status, headers, config) {
-        // log error
-      });
+
+    if($scope.name != ''){
+      $http.post(url, params).
+        success(function(data, status, headers, config) {
+          console.log("YATA!");
+          $scope.loadData();
+          $scope.name = '';
+        }).
+        error(function(data, status, headers, config) {
+          // log error
+        });
+    } 
   }
 
   $scope.deleteData = function(idx){
