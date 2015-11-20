@@ -16,6 +16,9 @@ app.controller('MainCtrl', function ($scope, localStorageService, $http) {
   // init params
   $scope.name = '';
   $scope.sku = '';
+  $scope.brand = {};
+  $scope.brandname = '';
+  $scope.brandcountry = 'SG';
 
   $scope.productCollection = [];
   $scope.loadData = function(){
@@ -50,10 +53,12 @@ app.controller('MainCtrl', function ($scope, localStorageService, $http) {
 
   $scope.createData = function(){
     var url = URL_SERVER + PATH + "/products";
+    var brandParams = { name: $scope.brandname, country: $scope.brandcountry};
     var params = {
       name: $scope.name,
       sku: $scope.sku,
-      price: 0
+      price: 0,
+      brand: [brandParams]
     }
 
     if($scope.name != ''){
@@ -66,12 +71,16 @@ app.controller('MainCtrl', function ($scope, localStorageService, $http) {
         error(function(data, status, headers, config) {
           // log error
         });
-    } 
+    }
   }
 
   $scope.deleteData = function(idx){
     var id = $scope.productCollection[idx]._id;
     console.log("this ID: "+id);
+
+    // show immediate visual response of deletion action
+    $scope.productCollection.splice(idx,1);
+
     var url = URL_SERVER + PATH + "/products/" + id;
     $http.delete(url).
       success(function(data, status, headers, config) {
@@ -86,10 +95,12 @@ app.controller('MainCtrl', function ($scope, localStorageService, $http) {
     var obj = $scope.productCollection[idx];
     var id = obj._id;
     var url = URL_SERVER + PATH + "/products/" + id;
+    var brandParams = { name: obj.brandname, country: obj.brandcountry }
     var params = {
       name: obj.name,
       sku: obj.sku,
-      price: 0
+      price: 0,
+      brand: brandParams
     }
     $http.put(url, params).
       success(function(data, status, headers, config) {
