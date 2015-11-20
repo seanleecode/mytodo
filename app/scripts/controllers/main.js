@@ -95,12 +95,14 @@ app.controller('MainCtrl', function ($scope, localStorageService, $http) {
     var obj = $scope.productCollection[idx];
     var id = obj._id;
     var url = URL_SERVER + PATH + "/products/" + id;
-    var brandParams = { name: obj.brandname, country: obj.brandcountry }
+    if(obj.brand.name == null) obj.brand.name = $scope.brandname;
+    if(obj.brand.country == null) obj.brand.country = $scope.brandcountry;
+    var brandParams = { name: obj.brand.name, country: obj.brand.country }
     var params = {
       name: obj.name,
       sku: obj.sku,
       price: 0,
-      brand: brandParams
+      brand: [brandParams]
     }
     $http.put(url, params).
       success(function(data, status, headers, config) {
