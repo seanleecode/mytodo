@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of the mytodoApp
  */
-app.controller('MainCtrl', function ($scope, localStorageService, $http) {
+app.controller('MainCtrl', function ($scope, Flash, localStorageService, $http) {
   var URL_SERVER = 'http://localhost:3000';
   // var URL_SERVER = 'http://ds057224.mongolab.com:57224/mytodo_db';
   var PATH = '/api';
@@ -22,6 +22,7 @@ app.controller('MainCtrl', function ($scope, localStorageService, $http) {
 
   $scope.productCollection = [];
   $scope.loadData = function(){
+
     var url = URL_SERVER + PATH + "/products";
     $http.get(url).
       success(function(data, status, headers, config) {
@@ -108,6 +109,9 @@ app.controller('MainCtrl', function ($scope, localStorageService, $http) {
       success(function(data, status, headers, config) {
         console.log('update success!');
         $scope.loadData();
+
+        var message = "<strong>Update successful!</strong>";
+        Flash.create('success', message, 'custom-class');
       }).
       error(function(data, status, headers, config) {
         // log error
