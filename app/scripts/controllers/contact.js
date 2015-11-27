@@ -28,6 +28,10 @@ app.controller('ContactCtrl', function ($scope, Flash, $http) {
         success(function(data, status, headers, config) {
           console.log("contact sent!");
 
+          $scope.name = '';
+          $scope.email = '';
+          $scope.message = '';
+
           var message = "<strong>Feedback sent!</strong>";
           Flash.create('success', message, 'custom-class');
         }).
