@@ -37,12 +37,12 @@
             <a class="navbar-brand" href="#/">haha</a>
           </div>
 
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+          <div class="collapse navbar-collapse" id="js-navbar-collapse" ng-controller="navcontrol">
 
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
+              <li ng-class="{'active': setActive('/')}"><a href="#/">Home</a></li>
+              <li ng-class="{'active': setActive('/about')}"><a ng-href="#/about">About</a></li>
+              <li ng-class="{'active': setActive('/contact')}"><a ng-href="#/contact">Contact</a></li>
             </ul>
           </div>
         </div>
@@ -93,6 +93,7 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/contact.js"></script>
         <!-- endbuild -->
 </body>
 </html>

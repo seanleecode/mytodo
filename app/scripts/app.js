@@ -20,6 +20,11 @@ var app = angular
     'LocalStorageModule',
     'flash'
   ])
+  .controller('navcontrol', function($scope, $location){
+    $scope.setActive = function(viewLocation){
+      return viewLocation === $location.path();
+    }
+  })
   .config(['localStorageServiceProvider', function(localStorageServiceProvider){
     localStorageServiceProvider.setPrefix('ls');
   }])
@@ -34,6 +39,11 @@ var app = angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
+      })
+      .when('/contact', {
+        templateUrl: 'views/contact.html',
+        controller: 'ContactCtrl',
+        controllerAs: 'contact'
       })
       .otherwise({
         redirectTo: '/'
