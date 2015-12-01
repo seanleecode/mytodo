@@ -35,7 +35,7 @@ app.controller('MainCtrl', function ($scope, Flash, localStorageService, $http) 
         // log error
       });
   };
-
+  
   // $scope.todos = [];
   // var todosInStore = localStorageService.get('todos');
   // $scope.todos = todosInStore || [];  // for local storage
