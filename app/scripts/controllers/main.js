@@ -35,22 +35,7 @@ app.controller('MainCtrl', function ($scope, Flash, localStorageService, $http) 
         // log error
       });
   };
-  
-  // $scope.todos = [];
-  // var todosInStore = localStorageService.get('todos');
-  // $scope.todos = todosInStore || [];  // for local storage
-  // $scope.$watch('todos', function(){
-  //   localStorageService.set('todos', $scope.todos);
-  // }, true);
 
-  // $scope.addTodo = function(){
-  //   $scope.productCollection.push($scope.todo);
-  //   $scope.todo = '';
-  // };
-  //
-  // $scope.removeTodo = function(index){
-  //   $scope.productCollection.splice(index,1);
-  // };
 
   $scope.createData = function(){
     var url = URL_SERVER + PATH + "/products";
@@ -119,3 +104,20 @@ app.controller('MainCtrl', function ($scope, Flash, localStorageService, $http) 
   }
 
 });
+
+
+// $scope.todos = [];
+// var todosInStore = localStorageService.get('todos');
+// $scope.todos = todosInStore || [];  // for local storage
+// $scope.$watch('todos', function(){
+//   localStorageService.set('todos', $scope.todos);
+// }, true);
+
+// $scope.addTodo = function(){
+//   $scope.productCollection.push($scope.todo);
+//   $scope.todo = '';
+// };
+//
+// $scope.removeTodo = function(index){
+//   $scope.productCollection.splice(index,1);
+// };

@@ -18,7 +18,8 @@ var app = angular
     'ngTouch',
     'ui.sortable',
     'LocalStorageModule',
-    'flash'
+    'flash',
+    'angular-carousel-3d'
   ])
   .controller('navcontrol', function($scope, $location){
     $scope.setActive = function(viewLocation){
